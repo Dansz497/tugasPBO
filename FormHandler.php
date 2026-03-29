@@ -1,12 +1,11 @@
 <?php
 class FormHandler {
-    // Properti (variabel di dalam class)
     public $firstName;
     public $lastName;
     public $phone;
     public $address;
 
-    // Constructor (otomatis menangkap data saat object dibuat)
+    // Constructor
     public function __construct($postData) {
         $this->firstName = $postData['firstname'];
         $this->lastName = $postData['lastname'];
@@ -14,13 +13,18 @@ class FormHandler {
         $this->address = $postData['address'];
     }
 
-    // Method (fungsi) untuk menampilkan hasil
+    // Method untuk tampilkan hasil
     public function displayData() {
-        echo "<div style='margin-top: 30px; font-family: sans-serif;'>";
-        // Pake htmlspecialchars biar aman dari XSS
-        echo "Hi, my name is " . htmlspecialchars($this->firstName) . " " . htmlspecialchars($this->lastName) . "<br><br>";
-        echo "Phone Number : " . htmlspecialchars($this->phone) . "<br><br>";
-        echo "Address : " . htmlspecialchars($this->address) . "<br><br>";
+        echo "<div class='result-box'>";
+        echo "<p><strong>Hi, my name is</strong> "
+            . htmlspecialchars($this->firstName) . " "
+            . htmlspecialchars($this->lastName) . "</p>";
+
+        echo "<p><strong>Phone Number:</strong> "
+            . htmlspecialchars($this->phone) . "</p>";
+
+        echo "<p><strong>Address:</strong> "
+            . htmlspecialchars($this->address) . "</p>";
         echo "</div>";
     }
 }
